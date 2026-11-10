@@ -1,0 +1,31 @@
+name: mendek_arena_masteran_burung
+description: "Aplikasi Otomatis Pemutar Video Masteran Burung YouTube & TikTok Terjadwal"
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_local_notifications: ^17.1.2
+  timezone: ^0.9.3
+  flutter_timezone: ^1.0.8
+  permission_handler: ^11.3.1
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
+  intl: ^0.19.0
+  uuid: ^4.4.0
+  webview_flutter: ^4.7.0
+  webview_flutter_android: ^3.16.0
+  wakelock_plus: ^1.2.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.2
+
+flutter:
+  uses-material-design: true
