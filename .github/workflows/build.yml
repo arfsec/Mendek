@@ -1,0 +1,45 @@
+name: Build Android APK Release
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Release APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 2. Set Up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: 3. Set Up Flutter 3.22+
+        uses: actions/setup-flutter@v2
+        with:
+          flutter-version: '3.22.2'
+          channel: 'stable'
+          cache: true
+
+      - name: 4. Install Dependencies
+        run: flutter pub get
+
+      - name: 5. Build Release APK
+        run: flutter build apk --release
+
+      - name: 6. Upload Release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mendek-Arena-Masteran-Burung-APK
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
+          retention-days: 30
